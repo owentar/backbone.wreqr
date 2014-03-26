@@ -9,9 +9,8 @@ Wreqr.RequestResponse = (function(Wreqr){
   return Wreqr.Handlers.extend({
     request: function(){
       var name = arguments[0];
-      var args = Array.prototype.slice.call(arguments, 1);
       if (this.hasHandler(name)) {
-        return this.getHandler(name).apply(this, args);
+        return this._triggerHandler.apply(this, arguments);
       }
     }
   });
